@@ -47,8 +47,7 @@ def generate_numeric_id(url):
     """Generate unique numeric ID from URL"""
     hash_object = hashlib.md5(url.encode())
     hex_dig = hash_object.hexdigest()
-    # Take 12 characters to reduce collisions
-    numeric_id = int(hex_dig[:12], 16) % 100000000  # 8 digits
+    numeric_id = int(hex_dig[:16], 16) % 10000000000000000  # 16 digits
     return str(numeric_id)
 
 def get_existing_job_links(feed_file='worldbank_jobs.xml'):
@@ -184,8 +183,9 @@ def scrape_worldbank_jobs():
                     description_parts.append(f"in the {job_data['department']}")
                 description_parts.append(f"Location: {job_data['location']}")
 
-                # ElementTree will handle XML escaping automatically
-                job_data['description'] = " ".join(description_parts) + "."
+                # HTML-escape & in description since RSS readers parse it as HTML
+                desc_text = " ".join(description_parts) + "."
+                job_data['description'] = desc_text.replace('&', '&amp;')
 
                 if job_data['title'] and job_data['link']:
                     jobs.append(job_data)
@@ -210,6 +210,7 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
 
     rss = ET.Element('rss', version='2.0')
     rss.set('xmlns:dc', 'http://purl.org/dc/elements/1.1/')
+    rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
     rss.set('xml:base', 'https://worldbankgroup.csod.com/')
 
     channel = ET.SubElement(rss, 'channel')
@@ -225,6 +226,11 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
 
     language = ET.SubElement(channel, 'language')
     language.text = 'en'
+
+    atom_link = ET.SubElement(channel, 'atom:link')
+    atom_link.set('rel', 'self')
+    atom_link.set('type', 'application/rss+xml')
+    atom_link.set('href', 'https://cinfoposte.github.io/worldbank-jobs/worldbank_jobs.xml')
 
     pub_date = ET.SubElement(channel, 'pubDate')
     current_time = datetime.utcnow()
