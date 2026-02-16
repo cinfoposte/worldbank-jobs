@@ -8,7 +8,8 @@ Format: ADB-compatible for cinfoposte portal import
 import time
 import os
 import shutil
-from datetime import datetime
+from datetime import datetime, timezone
+from email.utils import format_datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -183,9 +184,9 @@ def scrape_worldbank_jobs():
                     description_parts.append(f"in the {job_data['department']}")
                 description_parts.append(f"Location: {job_data['location']}")
 
-                # HTML-escape & in description since RSS readers parse it as HTML
                 desc_text = " ".join(description_parts) + "."
-                job_data['description'] = desc_text.replace('&', '&amp;')
+                # ElementTree handles XML escaping automatically — no manual escaping needed
+                job_data['description'] = desc_text
 
                 if job_data['title'] and job_data['link']:
                     jobs.append(job_data)
@@ -233,9 +234,9 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
     atom_link.set('href', 'https://cinfoposte.github.io/worldbank-jobs/worldbank_jobs.xml')
 
     pub_date = ET.SubElement(channel, 'pubDate')
-    current_time = datetime.utcnow()
-    # RFC-822 format for channel pubDate
-    pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S GMT')
+    current_time = datetime.now(timezone.utc)
+    # RFC 2822 date via email.utils — guarantees correct day-of-week
+    pub_date.text = format_datetime(current_time)
 
     for job in jobs:
         item = ET.SubElement(channel, 'item')
@@ -255,9 +256,8 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
         guid.set('isPermaLink', 'false')
         guid.text = generate_numeric_id(job.get('link', ''))
 
-        # RFC-822 format for item pubDate
         item_pub_date = ET.SubElement(item, 'pubDate')
-        item_pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S GMT')
+        item_pub_date.text = format_datetime(current_time)
 
         source = ET.SubElement(item, 'source')
         source.set('url', 'https://worldbankgroup.csod.com/')
