@@ -7,7 +7,8 @@ Format: ADB-compatible for cinfoposte portal import
 
 import time
 import os
-from datetime import datetime, timezone
+import shutil
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -18,7 +19,6 @@ from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import hashlib
-import html
 
 def setup_driver():
     """Set up Chrome WebDriver with appropriate options"""
@@ -29,15 +29,27 @@ def setup_driver():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--window-size=1920,1080')
     chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-    
-    service = Service('/usr/bin/chromedriver')
+
+    # Find chromedriver in PATH (works with browser-actions/setup-chrome)
+    chromedriver_path = shutil.which('chromedriver')
+    if chromedriver_path:
+        print(f"Using chromedriver at: {chromedriver_path}")
+        service = Service(chromedriver_path)
+    else:
+        # Fallback to common location
+        print("Using chromedriver from system path")
+        service = Service('chromedriver')
+
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
-def generate_unique_guid(url):
-    """Generate a unique GUID from URL using full MD5 hash"""
+def generate_numeric_id(url):
+    """Generate unique numeric ID from URL"""
     hash_object = hashlib.md5(url.encode())
-    return hash_object.hexdigest()
+    hex_dig = hash_object.hexdigest()
+    # Take 12 characters to reduce collisions
+    numeric_id = int(hex_dig[:12], 16) % 100000000  # 8 digits
+    return str(numeric_id)
 
 def get_existing_job_links(feed_file='worldbank_jobs.xml'):
     """Extract job links from existing RSS feed"""
@@ -171,9 +183,9 @@ def scrape_worldbank_jobs():
                 if job_data.get('department'):
                     description_parts.append(f"in the {job_data['department']}")
                 description_parts.append(f"Location: {job_data['location']}")
-                
-                # Properly escape HTML entities in description
-                job_data['description'] = html.escape(" ".join(description_parts) + ".")
+
+                # ElementTree will handle XML escaping automatically
+                job_data['description'] = " ".join(description_parts) + "."
 
                 if job_data['title'] and job_data['link']:
                     jobs.append(job_data)
@@ -198,9 +210,8 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
 
     rss = ET.Element('rss', version='2.0')
     rss.set('xmlns:dc', 'http://purl.org/dc/elements/1.1/')
-    rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
     rss.set('xml:base', 'https://worldbankgroup.csod.com/')
-    
+
     channel = ET.SubElement(rss, 'channel')
 
     title = ET.SubElement(channel, 'title')
@@ -215,39 +226,32 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
     language = ET.SubElement(channel, 'language')
     language.text = 'en'
 
-    # Add atom:link with rel="self" for feed validation
-    atom_link = ET.SubElement(channel, '{http://www.w3.org/2005/Atom}link')
-    atom_link.set('rel', 'self')
-    atom_link.set('type', 'application/rss+xml')
-    atom_link.set('href', f'https://worldbankgroup.csod.com/{output_file}')
-
     pub_date = ET.SubElement(channel, 'pubDate')
-    current_time = datetime.now(timezone.utc)
+    current_time = datetime.utcnow()
     # RFC-822 format for channel pubDate
-    pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S +0000')
+    pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
     for job in jobs:
         item = ET.SubElement(channel, 'item')
 
         item_title = ET.SubElement(item, 'title')
-        # Escape special characters in title
-        item_title.text = html.escape(job.get('title', 'Untitled Position'))
+        # ElementTree handles XML escaping automatically
+        item_title.text = job.get('title', 'Untitled Position')
 
         item_link = ET.SubElement(item, 'link')
         item_link.text = job.get('link', '')
 
         item_description = ET.SubElement(item, 'description')
-        # Description is already escaped in the scraping function
         item_description.text = job.get('description', '')
 
-        # Use full MD5 hash for unique GUID
+        # Use numeric GUID per manual
         guid = ET.SubElement(item, 'guid')
         guid.set('isPermaLink', 'false')
-        guid.text = generate_unique_guid(job.get('link', ''))
+        guid.text = generate_numeric_id(job.get('link', ''))
 
         # RFC-822 format for item pubDate
         item_pub_date = ET.SubElement(item, 'pubDate')
-        item_pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S +0000')
+        item_pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
         source = ET.SubElement(item, 'source')
         source.set('url', 'https://worldbankgroup.csod.com/')
