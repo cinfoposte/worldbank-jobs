@@ -1,16 +1,17 @@
 <?xml version="1.0" ?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xml:base="https://worldbankgroup.csod.com/">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xml:base="https://worldbankgroup.csod.com/">
   <channel>
     <title>World Bank Group Job Vacancies</title>
     <link>https://worldbankgroup.csod.com/</link>
     <description>List of vacancies at the World Bank Group</description>
     <language>en</language>
+    <atom:link rel="self" type="application/rss+xml" href="https://cinfoposte.github.io/worldbank-jobs/worldbank_jobs.xml"/>
     <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
     <item>
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35666?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">35305199</guid>
+      <guid isPermaLink="false">9838601761555523</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -18,7 +19,7 @@
       <title>E T Consultant - Industry analysis</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35665?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant - Industry analysis. Location: Washington, DC.</description>
-      <guid isPermaLink="false">77570624</guid>
+      <guid isPermaLink="false">2026510868454609</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -26,7 +27,7 @@
       <title>Senior Risk Officer</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35659?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Senior Risk Officer. Location: Washington, DC.</description>
-      <guid isPermaLink="false">79813434</guid>
+      <guid isPermaLink="false">1245857853269532</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -34,7 +35,7 @@
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35654?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">18001543</guid>
+      <guid isPermaLink="false">1464270949148685</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -42,7 +43,7 @@
       <title>E T Temporary</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35640?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Temporary. Location: Washington, DC.</description>
-      <guid isPermaLink="false">92988835</guid>
+      <guid isPermaLink="false">1787214116325130</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -50,7 +51,7 @@
       <title>Insurance Officer</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35655?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Insurance Officer. Location: Washington, DC.</description>
-      <guid isPermaLink="false">75407760</guid>
+      <guid isPermaLink="false">8237799522969662</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -58,7 +59,7 @@
       <title>Financial Management Specialist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35653?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Financial Management Specialist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">86318366</guid>
+      <guid isPermaLink="false">5527935360463303</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -66,7 +67,7 @@
       <title>ServiceNow Architect</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35641?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of ServiceNow Architect. Location: Washington, DC.</description>
-      <guid isPermaLink="false">37310360</guid>
+      <guid isPermaLink="false">5266317171791499</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -74,7 +75,7 @@
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35636?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">55258817</guid>
+      <guid isPermaLink="false">9261707841838446</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -82,7 +83,7 @@
       <title>Environmental Specialist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35626?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Environmental Specialist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">74552181</guid>
+      <guid isPermaLink="false">4765180251746253</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -90,7 +91,7 @@
       <title>Risk Officer - Private Equity</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35637?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Risk Officer - Private Equity. Location: Washington, DC.</description>
-      <guid isPermaLink="false">6764163</guid>
+      <guid isPermaLink="false">2037896096220229</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -98,7 +99,7 @@
       <title>IT Officer, Business Solutions I</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35630?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of IT Officer, Business Solutions I. Location: Washington, DC.</description>
-      <guid isPermaLink="false">73196123</guid>
+      <guid isPermaLink="false">6824816181139209</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -106,15 +107,15 @@
       <title>Senior Financial Management Specialist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35620?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Senior Financial Management Specialist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">37085334</guid>
+      <guid isPermaLink="false">7610980824464174</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
     <item>
-      <title>WBG Manager - E&amp;S Risk Management</title>
+      <title>WBG Manager - E&amp;amp;S Risk Management</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35609?c=worldbankgroup</link>
-      <description>World Bank Group has a vacancy for the position of WBG Manager - E&amp;S Risk Management. Location: Washington, DC.</description>
-      <guid isPermaLink="false">40838521</guid>
+      <description>World Bank Group has a vacancy for the position of WBG Manager - E&amp;amp;S Risk Management. Location: Washington, DC.</description>
+      <guid isPermaLink="false">5340660393330520</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -122,7 +123,7 @@
       <title>Executive Assistant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35600?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Executive Assistant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">14522056</guid>
+      <guid isPermaLink="false">885687717515243</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -130,15 +131,15 @@
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35612?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">9595346</guid>
+      <guid isPermaLink="false">8642164840659762</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
     <item>
-      <title>Program Assistant - Administrative &amp; Client Support</title>
+      <title>Program Assistant - Administrative &amp;amp; Client Support</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35608?c=worldbankgroup</link>
-      <description>World Bank Group has a vacancy for the position of Program Assistant - Administrative &amp; Client Support. Location: Washington, DC.</description>
-      <guid isPermaLink="false">27576788</guid>
+      <description>World Bank Group has a vacancy for the position of Program Assistant - Administrative &amp;amp; Client Support. Location: Washington, DC.</description>
+      <guid isPermaLink="false">1593896872416819</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -146,7 +147,7 @@
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35606?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">61361957</guid>
+      <guid isPermaLink="false">5625423017233780</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -154,7 +155,7 @@
       <title>Private Sector Specialist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35605?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Private Sector Specialist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">39915800</guid>
+      <guid isPermaLink="false">7991019121923925</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -162,7 +163,7 @@
       <title>E T Consultant</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35556?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of E T Consultant. Location: Washington, DC.</description>
-      <guid isPermaLink="false">73103234</guid>
+      <guid isPermaLink="false">734032493571740</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -170,7 +171,7 @@
       <title>Infrastructure Engineering Analyst</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35597?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Infrastructure Engineering Analyst. Location: Washington, DC.</description>
-      <guid isPermaLink="false">78911678</guid>
+      <guid isPermaLink="false">7024691555758077</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -178,7 +179,7 @@
       <title>Senior Agriculture Economist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35596?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Senior Agriculture Economist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">28326098</guid>
+      <guid isPermaLink="false">8263846779161600</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -186,15 +187,15 @@
       <title>(Senior) Industry Specialist - Mining Engineer/Metallurgist</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35595?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of (Senior) Industry Specialist - Mining Engineer/Metallurgist. Location: Washington, DC.</description>
-      <guid isPermaLink="false">24492935</guid>
+      <guid isPermaLink="false">2179115569003260</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
     <item>
-      <title>Investment Officer - Minerals &amp; Metals</title>
+      <title>Investment Officer - Minerals &amp;amp; Metals</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35594?c=worldbankgroup</link>
-      <description>World Bank Group has a vacancy for the position of Investment Officer - Minerals &amp; Metals. Location: Washington, DC.</description>
-      <guid isPermaLink="false">6248567</guid>
+      <description>World Bank Group has a vacancy for the position of Investment Officer - Minerals &amp;amp; Metals. Location: Washington, DC.</description>
+      <guid isPermaLink="false">8258943906151603</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
@@ -202,7 +203,7 @@
       <title>Operations Analyst</title>
       <link>https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35576?c=worldbankgroup</link>
       <description>World Bank Group has a vacancy for the position of Operations Analyst. Location: Washington, DC.</description>
-      <guid isPermaLink="false">16358982</guid>
+      <guid isPermaLink="false">1498876902253000</guid>
       <pubDate>Mon, 16 Feb 2026 15:07:09 GMT</pubDate>
       <source url="https://worldbankgroup.csod.com/">World Bank Group Job Vacancies</source>
     </item>
