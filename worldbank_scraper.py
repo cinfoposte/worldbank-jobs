@@ -18,6 +18,7 @@ from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import hashlib
+import html
 
 def setup_driver():
     """Set up Chrome WebDriver with appropriate options"""
@@ -33,12 +34,10 @@ def setup_driver():
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
-def generate_numeric_id(url):
-    """Generate a numeric ID from URL for guid"""
+def generate_unique_guid(url):
+    """Generate a unique GUID from URL using full MD5 hash"""
     hash_object = hashlib.md5(url.encode())
-    hex_dig = hash_object.hexdigest()
-    numeric_id = int(hex_dig[:8], 16) % 10000000
-    return str(numeric_id)
+    return hash_object.hexdigest()
 
 def get_existing_job_links(feed_file='worldbank_jobs.xml'):
     """Extract job links from existing RSS feed"""
@@ -173,7 +172,8 @@ def scrape_worldbank_jobs():
                     description_parts.append(f"in the {job_data['department']}")
                 description_parts.append(f"Location: {job_data['location']}")
                 
-                job_data['description'] = " ".join(description_parts) + "."
+                # Properly escape HTML entities in description
+                job_data['description'] = html.escape(" ".join(description_parts) + ".")
 
                 if job_data['title'] and job_data['link']:
                     jobs.append(job_data)
@@ -198,6 +198,7 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
 
     rss = ET.Element('rss', version='2.0')
     rss.set('xmlns:dc', 'http://purl.org/dc/elements/1.1/')
+    rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
     rss.set('xml:base', 'https://worldbankgroup.csod.com/')
     
     channel = ET.SubElement(rss, 'channel')
@@ -214,28 +215,39 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
     language = ET.SubElement(channel, 'language')
     language.text = 'en'
 
+    # Add atom:link with rel="self" for feed validation
+    atom_link = ET.SubElement(channel, '{http://www.w3.org/2005/Atom}link')
+    atom_link.set('rel', 'self')
+    atom_link.set('type', 'application/rss+xml')
+    atom_link.set('href', f'https://worldbankgroup.csod.com/{output_file}')
+
     pub_date = ET.SubElement(channel, 'pubDate')
     current_time = datetime.now(timezone.utc)
+    # RFC-822 format for channel pubDate
     pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S +0000')
 
     for job in jobs:
         item = ET.SubElement(channel, 'item')
 
         item_title = ET.SubElement(item, 'title')
-        item_title.text = job.get('title', 'Untitled Position')
+        # Escape special characters in title
+        item_title.text = html.escape(job.get('title', 'Untitled Position'))
 
         item_link = ET.SubElement(item, 'link')
         item_link.text = job.get('link', '')
 
         item_description = ET.SubElement(item, 'description')
+        # Description is already escaped in the scraping function
         item_description.text = job.get('description', '')
 
+        # Use full MD5 hash for unique GUID
         guid = ET.SubElement(item, 'guid')
         guid.set('isPermaLink', 'false')
-        guid.text = generate_numeric_id(job.get('link', ''))
+        guid.text = generate_unique_guid(job.get('link', ''))
 
+        # RFC-822 format for item pubDate
         item_pub_date = ET.SubElement(item, 'pubDate')
-        item_pub_date.text = current_time.strftime('%Y-%m-%d')
+        item_pub_date.text = current_time.strftime('%a, %d %b %Y %H:%M:%S +0000')
 
         source = ET.SubElement(item, 'source')
         source.set('url', 'https://worldbankgroup.csod.com/')
