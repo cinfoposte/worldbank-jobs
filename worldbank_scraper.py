@@ -265,6 +265,16 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
 
     xml_string = ET.tostring(rss, encoding='unicode')
     dom = minidom.parseString(xml_string)
+
+    # Wrap item description content in CDATA to avoid HTML entity issues in feed readers
+    for item_node in dom.getElementsByTagName('item'):
+        for desc_node in item_node.getElementsByTagName('description'):
+            text_content = desc_node.firstChild.nodeValue if desc_node.firstChild else ''
+            while desc_node.firstChild:
+                desc_node.removeChild(desc_node.firstChild)
+            cdata = dom.createCDATASection(text_content)
+            desc_node.appendChild(cdata)
+
     pretty_xml = dom.toprettyxml(indent='  ')
 
     lines = [line for line in pretty_xml.split('\n') if line.strip()]
