@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import hashlib
+import html as html_module
 
 def setup_driver():
     """Set up Chrome WebDriver with appropriate options"""
@@ -266,13 +267,16 @@ def generate_rss_feed(jobs, output_file='worldbank_jobs.xml'):
     xml_string = ET.tostring(rss, encoding='unicode')
     dom = minidom.parseString(xml_string)
 
-    # Wrap item description content in CDATA to avoid HTML entity issues in feed readers
+    # Wrap item description content in CDATA to avoid HTML entity issues in feed readers.
+    # HTML-escape the text so that bare '&' becomes '&amp;' inside the CDATA block;
+    # feed readers that parse descriptions as HTML will then decode it correctly.
     for item_node in dom.getElementsByTagName('item'):
         for desc_node in item_node.getElementsByTagName('description'):
             text_content = desc_node.firstChild.nodeValue if desc_node.firstChild else ''
+            html_safe = html_module.escape(text_content, quote=False)
             while desc_node.firstChild:
                 desc_node.removeChild(desc_node.firstChild)
-            cdata = dom.createCDATASection(text_content)
+            cdata = dom.createCDATASection(html_safe)
             desc_node.appendChild(cdata)
 
     pretty_xml = dom.toprettyxml(indent='  ')
